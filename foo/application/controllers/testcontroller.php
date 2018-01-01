@@ -4,7 +4,6 @@ class TestController extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->database();
         $this->load->model('test_model');
     }
 
@@ -35,7 +34,7 @@ class TestController extends CI_Controller {
     }
 
     public function getTestView() {
-        $this->load->view('head');
+        $this->load->view('header');
         $this->load->view('TestView');
         $this->load->view('footer');
     }
@@ -44,24 +43,26 @@ class TestController extends CI_Controller {
     {
         $data = array('key' => $id);
 
-        $this->load->view('head');
+        $this->load->view('header');
         $this->load->view('TestViewWithParam', $data);
         $this->load->view('footer');
     }
 
     public function getDB(){
+        $this->load->database();
         $datas = $this->test_model->gets();
 
-        $this->load->view('head');
+        $this->load->view('header');
         $this->load->view('test_list', array('topics'=>$datas));
         $this->load->view('DBView');
         $this->load->view('footer');
     }
     public function getDBWithId($id){
+        $this->load->database();
         $datas = $this->test_model->gets();
         $data = $this->test_model->get($id);
 
-        $this->load->view('head');
+        $this->load->view('header');
         $this->load->view('test_list', array('topics'=>$datas));
         $this->load->view('DBViewWithId', array('topics' => $data));
         $this->load->view('footer');
@@ -81,11 +82,14 @@ class TestController extends CI_Controller {
         $this->eatPotion($potion1);
         $this->eatPotion($potion2);
         
-        $potion3 = $this->load->model('potion/BluePotion');
-        $potion3->eat(); // 여기서 에러
+        // model을 로드하는 것은 객체를 DI받는 것이 아니므로, 다음과 같은 방법은 사용할 수 없음.
+        //$potion3 = $this->load->model('potion/BluePotion');
+        //$potion3->eat(); // 여기서 에러
         
-        //$this->load->model('potion/BluePotion');
-        //$this->BluePotion->eat();
+        
+        $this->load->model('potion/BluePotion');
+        $this->BluePotion->eat();
+
         
     }
 
@@ -100,4 +104,9 @@ class TestController extends CI_Controller {
     }
     */
 
+    public function viewCSS(){
+        $this->load->view('header');
+        $this->load->view('TestView');
+        $this->load->view('footer');
+    }
 }
