@@ -1,4 +1,4 @@
-TestViewWithParam.php��
+TestViewWithParam.php호출
 <br><br>
 $data = array('key' => $id);
 <br>

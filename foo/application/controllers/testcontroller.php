@@ -1,4 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+// 위 코드는 직접적으로 이 스크립트를 실행하게 할 수 없도록 하는 코드이다.
 
 class TestController extends CI_Controller {
     function __construct()
@@ -107,6 +108,31 @@ class TestController extends CI_Controller {
     public function viewCSS(){
         $this->load->view('header');
         $this->load->view('TestView');
+        $this->load->view('footer');
+    }
+    
+    public function helper(){
+        $this->load->view('header');
+        $this->load->helper('url');
+        $data = array('title'=> '타이틀', 'description'=>'www.naver.com');
+        $this->load->view('helperOutput', $data);
+        $this->load->view('footer');
+    }
+    
+    public function customHelper(){
+        $this->load->view('header');
+        // custom_help.php, url_helper.php를 로드한다.
+        // Custom을 불러도 custom_helper.php가 로드된다.(case-insensitive)
+        $this->load->helper('Custom', 'url');
+        $title = '타이틀';
+        $description = 'www.naver.com';
+        // 시간값은 DB를 활용한다면 UNIX_TIMESTAMP(created) AS created 로 sql 셀렉트 시 가져온다.
+        // 아래는 php함수를 사용한 것이다.
+        // strtotime() : Parse about any English textual datetime description into a Unix timestamp
+        //$created = strtotime('2018-01-06 12:34:56'); 
+        $created = strtotime('now');
+        $data = array('title'=> $title, 'description'=>$description, 'created'=>$created);
+        $this->load->view('CustomHelperOutput', $data);
         $this->load->view('footer');
     }
 }

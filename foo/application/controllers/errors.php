@@ -2,7 +2,7 @@
 class Errors extends CI_Controller{
     public function notfound() {
         
-        // error µð·ºÅä¸®ÀÇ 404.php ·Îµå
+        // error 404.php í˜¸ì¶œ
         $this->load->view('error/404');
     }
 }

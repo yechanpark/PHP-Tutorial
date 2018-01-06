@@ -49,32 +49,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-// path ¹ÌÁöÁ¤ »óÅÂ¿¡¼­ web application Á¢¼Ó ½Ã Ãâ·Â ÆäÀÌÁö ÁöÁ¤
 // http//domain/
 $route['default_controller'] = 'welcome';
 
-// Á¸ÀçÇÏÁö ¾Ê´Â ÆäÀÌÁö¿¡ Á¢¼ÓÇÒ ½Ã
 $route['404_override'] = 'errors/notfound';
 
 $route['translate_uri_dashes'] = FALSE;
 $route['testcontroller/(:num)'] = "testcontroller/get/$1";
 $route['post/(:num)'] = "testcontroller/get/$1";
-// URI routes ÂüÁ¶ : https://opentutorials.org/course/697/3838
-// ÀÌ ÄÚµå¸¦ Ãß°¡ÇÏ¸é
+// URI routes ì°¸ê³  : https://opentutorials.org/course/697/3838
 // $route['testcontroller/(:num)'] = "testcontroller/get/$1";
 
-// ´ÙÀ½ URLÀº
+// ìž…ë ¥ URL
 // http//domain/index.php/testcontroller/10
 // http//domain/index.php/post/10
 
-// ´ÙÀ½ URL(Àû¿ë Àü)°ú µ¿ÀÏÇÏ°Ô ÀÛµ¿ÇÑ´Ù
+// ë§¤í•‘ë˜ëŠ” URL
 // http//domain/index.php/testcontroller/get/10
 
 
 $route['testcontroller/([a-z]+)/([a-z]+)/(\d+)'] = "$1/$2/$3";
-// [a-z] -> a~z±îÁö ÇÏ³ª¶óµµ Á¸ÀçÇÑ´Ù¸é ÀÌ ÆÐÅÏ¿¡ ÀÏÄ¡,
-// + -> ¼ö·® ÇÑÁ¤ÀÚ, ÇÏ³ª¶óµµ ÇÑ °³ ÀÌ»óÀÌ¶ó¸é
-// ex url¿¡ 100ÀÌ ÀÖ´Ù¸é a-z±îÁö Æ÷ÇÔÀÌ ¾ÈµÇ¹Ç·Î ÆÐÅÏ¿¡ ÀÏÄ¡ÇÏÁö ¾ÊÀ½
-// ex url¿¡ a°¡ ÀÖ´Ù¸é a-z±îÁö Æ÷ÇÔÀÌ µÇ¹Ç·Î ÆÐÅÏ¿¡ ÀÏÄ¡ÇÔ
-// () -> ¹é ·¹ÆÛ·±½Ì, ()´Â ¼ø¼­´ë·Î $1, $2, $3¿¡ ÇØ´ç
-// $1Àº ÄÁÆ®·Ñ·¯ Å¬·¡½º, $2´Â ¸Þ¼­µå, $3Àº ÀÎÀÚ
+// [a-z] -> a~zê°€ í¬í•¨ëœ ë¬¸ìžì—´ í¬í•¨ì‹œ í•´ë‹¹ëœë‹¤.
+// + -> ì •ê·œí‘œí˜„ì‹ì—ì„œ 1ê°œ ì´ìƒì˜ ë¬¸ìžë¥¼ ì˜ë¯¸í•œë‹¤.
