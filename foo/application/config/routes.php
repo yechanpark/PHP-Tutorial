@@ -55,8 +55,8 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = 'errors/notfound';
 
 $route['translate_uri_dashes'] = FALSE;
-$route['testcontroller/(:num)'] = "testcontroller/get/$1";
-$route['post/(:num)'] = "testcontroller/get/$1";
+$route['testcontroller/(:num)'] = "foo/index.php/testcontroller/get/$1";
+$route['post/(:num)'] = "foo/index.php/testcontroller/get/$1";
 // URI routes 참고 : https://opentutorials.org/course/697/3838
 // $route['testcontroller/(:num)'] = "testcontroller/get/$1";
 

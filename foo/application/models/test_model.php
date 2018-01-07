@@ -17,5 +17,19 @@ class test_model extends CI_Model {
         return $this->db->get_where('topic', array('id'=>$test_id))->row();
     }
 
+    public function add($title, $description){
+        // 'now()'를 insert()에서 수행하면 함수가 아닌 문자열로 인식되고, ''를 넣지 않으면 오류가 난다.
+        // 따라서 다음 문장은 now()가 DB입장에서 해석가능한 형태로 출력되도록 하는 코드이다.
+        $this->db->set('created', 'NOW()', false);
+        
+        // insert query. 
+        $this->db->insert('topic', array(
+            'title'=>$title,
+            'description'=>$description,
+        ));
+        
+        // 마지막으로 추가한 데이터에 대한 id값을 알아내는 API
+        return $this->db->insert_id();
+    }
 }
 ?>
