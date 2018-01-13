@@ -1,9 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-// 이 파일은 .gitignore에 등록하여 VCS에 올라가면 안되는 파일
-// 여기서는 공부용이므로 따로 등록하지 않음.
-
+echo 'production';
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
